@@ -62,3 +62,92 @@ html {
     animation-duration: 0.001s;
   }
 }
+
+/* HubSpot Form Styling */
+.hs-form-frame input,
+.hs-form-frame textarea,
+.hs-form-frame select {
+  border-radius: 8px !important;
+  border: 1px solid #e6e6e6 !important;
+  padding: 10px 14px !important;
+  width: 100% !important;
+  font-size: 15px !important;
+  transition: all 0.2s ease !important;
+}
+
+.hs-form-frame input:focus,
+.hs-form-frame textarea:focus,
+.hs-form-frame select:focus {
+  border-color: #E40DA8 !important;
+  box-shadow: 0 0 0 2px rgba(228, 13, 168, 0.2) !important;
+  outline: none !important;
+}
+
+.hs-form-frame label {
+  font-weight: 500 !important;
+  color: #233C42 !important;
+  font-size: 14px !important;
+  margin-bottom: 8px !important;
+  display: block !important;
+}
+
+.hs-form-frame .hs-button,
+.hs-form-frame input[type="submit"] {
+  background: linear-gradient(90deg, #E40DA8 0%, #7424B3 100%) !important;
+  border-radius: 6px !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  padding: 12px 22px !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: transform 0.2s ease, opacity 0.2s ease !important;
+  font-size: 16px !important;
+  width: 100% !important;
+  margin-top: 8px !important;
+}
+
+.hs-form-frame .hs-button:hover,
+.hs-form-frame input[type="submit"]:hover {
+  transform: scale(1.02) !important;
+  opacity: 0.95 !important;
+}
+
+.hs-form-frame .hs-error-msgs {
+  margin-top: 8px !important;
+  color: #dc2626 !important;
+  font-size: 13px !important;
+}
+
+.hs-form-frame .hs-form-field {
+  margin-bottom: 20px !important;
+}
+
+.hs-form-frame .hs-richtext {
+  color: #4b5563 !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+.hs-form-frame .legal-consent-container {
+  margin-top: 16px !important;
+  padding: 16px !important;
+  background: #f9fafb !important;
+  border-radius: 8px !important;
+}
+
+.hs-form-frame .hs-form-booleancheckbox-display {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+}
+
+.hs-form-frame input[type="checkbox"] {
+  width: 18px !important;
+  height: 18px !important;
+  margin-top: 2px !important;
+  cursor: pointer !important;
+}
+
+.hs-form-frame .hs-dependent-field {
+  margin-top: 16px !important;
+}

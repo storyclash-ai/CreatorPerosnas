@@ -1,239 +1,118 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Tag, Search, BarChart3, Users, UserCircle } from "lucide-react";
+import React, { useState } from "react";
+import {
+  Tag,
+  Search,
+  BarChart3,
+  Users,
+  UserCircle,
+} from "lucide-react";
 
 type Step = {
-  id: number;
-  icon: React.ReactNode;
   title: string;
-  description: string;
+  subtitle: string;
+  icon: React.ReactNode;
 };
 
 const steps: Step[] = [
   {
-    id: 1,
-    icon: <Tag className="w-4 h-4" strokeWidth={1.5} />,
-    title: "Tell Us About Your Brand",
-    description: "Enter your brand or website to get started.",
+    title: "Enter Your Brand",
+    subtitle:
+      "Tell us about your brand or website. We analyze tone, audience, and positioning.",
+    icon: <Tag strokeWidth={1.5} />,
   },
   {
-    id: 2,
-    icon: <Search className="w-4 h-4" strokeWidth={1.5} />,
-    title: "Brand Match",
-    description: "Our AI detects your brand profile instantly.",
+    title: "Brand Profile Detection",
+    subtitle:
+      "AI builds your brand persona automatically based on how you communicate.",
+    icon: <Search strokeWidth={1.5} />,
   },
   {
-    id: 3,
-    icon: <BarChart3 className="w-4 h-4" strokeWidth={1.5} />,
-    title: "Markets & Competitors",
-    description: "We analyze markets and spot your competitors.",
+    title: "Market & Creator Analysis",
+    subtitle:
+      "We scan competitors and collaborations to map relevant creator niches.",
+    icon: <BarChart3 strokeWidth={1.5} />,
   },
   {
-    id: 4,
-    icon: <Users className="w-4 h-4" strokeWidth={1.5} />,
-    title: "Collaborations",
-    description: "Discover known creator collaborations.",
+    title: "Creator Matches",
+    subtitle:
+      "Instantly see your top matching creators that fit your style and community.",
+    icon: <Users strokeWidth={1.5} />,
   },
   {
-    id: 5,
-    icon: <UserCircle className="w-4 h-4" strokeWidth={1.5} />,
-    title: "Creator Personas",
-    description: "Get your brand-fit creator personas instantly.",
+    title: "Refine & Compare",
+    subtitle:
+      "Adjust the persona, compare creators side-by-side, and save for campaigns.",
+    icon: <UserCircle strokeWidth={1.5} />,
   },
 ];
 
 export default function HowItWorks() {
-  const [activeStep, setActiveStep] = useState<number | null>(null);
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimated) {
-            setHasAnimated(true);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [hasAnimated]);
-
-  const scrollToForm = () => {
-    const formElement = document.getElementById('form-section');
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const [active, setActive] = useState(1);
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative py-16 px-6 bg-gradient-to-b from-white via-[#FAFAFC] to-white overflow-hidden"
-    >
-      <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#222F32] mb-4">
-            How Creator Personas Works
-          </h2>
-          <p className="text-lg text-[#6A6B72] max-w-2xl mx-auto">
-            Our AI-powered process analyzes your brand and finds the perfect creator matches in just a few steps.
-          </p>
-        </div>
+    <section className="relative max-w-6xl mx-auto px-6 md:px-8 py-14 md:py-18">
+      <header className="text-center mb-8 md:mb-10">
+        <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-[#233C42]">
+          How Creator Personas Works - From Brand Insight to Perfect Creator Match
+        </h2>
+        <p className="mt-3 text-[#233C42]/70 max-w-3xl mx-auto">
+          Our AI builds your creator persona and instantly connects you with the
+          best-matching creators for your brand.
+        </p>
+      </header>
 
-        {/* Desktop: Horizontal Timeline */}
-        <div className="hidden lg:block">
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute top-[44px] left-0 right-0 h-[1px] bg-gradient-to-r from-[#E5E5E8] via-[#E5E5E8] to-[#E5E5E8]">
-              <div
-                className="h-full bg-gradient-to-r from-[#E40DA8]/50 to-[#7424B3]/50 transition-all duration-1000 ease-out"
-                style={{
-                  width: hasAnimated ? '100%' : '0%',
-                  opacity: hasAnimated ? 0.5 : 0
-                }}
-              />
-            </div>
+      <div className="relative mt-8 md:mt-10">
+        <div className="absolute left-0 right-0 top-8 md:top-10 h-px bg-[#E7E8EC]" />
 
-            {/* Steps */}
-            <div className="relative flex justify-between items-start">
-              {steps.map((step, index) => (
-                <div
-                  key={step.id}
-                  className="flex flex-col items-center w-[180px] group cursor-pointer"
-                  onMouseEnter={() => setActiveStep(step.id)}
-                  onMouseLeave={() => setActiveStep(null)}
-                  style={{
-                    opacity: hasAnimated ? 1 : 0,
-                    transform: hasAnimated ? 'translateY(0)' : 'translateY(20px)',
-                    transition: `all 0.6s ease-out ${index * 0.1}s`,
-                  }}
+        <ol className="relative grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-10">
+          {steps.map((s, i) => {
+            const isActive = i === active;
+            return (
+              <li key={i} className="relative">
+                <button
+                  onClick={() => setActive(i)}
+                  aria-label={`Go to step ${i + 1}`}
+                  className={[
+                    "group relative z-10 mx-auto flex h-16 w-16 items-center justify-center rounded-full border transition-all",
+                    "bg-white shadow-sm ring-1 ring-black/5",
+                    "hover:scale-[1.05] ease-out",
+                    isActive
+                      ? "border-transparent"
+                      : "border-[#E7E8EC] hover:border-[#DADBE0]",
+                  ].join(" ")}
+                  style={
+                    isActive
+                      ? {
+                          background:
+                            "linear-gradient(135deg,#E40DA8 0%,#7424B3 100%)",
+                          color: "white",
+                        }
+                      : { color: "#C8C9CF", background: "white" }
+                  }
                 >
-                  {/* Icon Circle */}
-                  <div
-                    className={`
-                      w-[88px] h-[88px] rounded-full border flex items-center justify-center mb-5
-                      transition-all duration-300 ease-out group-hover:scale-105
-                      ${
-                        activeStep === step.id
-                          ? 'border-transparent bg-gradient-to-br from-[#E40DA8]/40 to-[#7424B3]/60 shadow-md shadow-purple-100/30'
-                          : 'border-[#E5E5E8] bg-white group-hover:border-[#E40DA8]/20 group-hover:shadow-sm'
-                      }
-                    `}
-                  >
-                    <div
-                      className={`
-                        transition-colors duration-300
-                        ${activeStep === step.id ? 'text-[#E40DA8]' : 'text-[#B8BAC0] group-hover:text-[#E40DA8]'}
-                      `}
-                    >
-                      {step.icon}
-                    </div>
+                  <span className={isActive ? "text-white" : "text-[#C8C9CF]"}>
+                    {s.icon}
+                  </span>
+                  {isActive && (
+                    <span className="absolute inset-0 rounded-full ring-4 ring-[#E40DA8]/15" />
+                  )}
+                </button>
+
+                <div className="mt-4 text-center max-w-[16rem] mx-auto">
+                  <div className="text-xs uppercase tracking-wide text-[#233C42]/50">
+                    Step {i + 1}
                   </div>
-
-                  {/* Step Number */}
-                  <div
-                    className={`
-                      text-xs font-semibold mb-2 transition-colors duration-300
-                      ${activeStep === step.id ? 'text-[#E40DA8]' : 'text-[#6A6B72]'}
-                    `}
-                  >
-                    Step {step.id}
+                  <div className="mt-1 font-semibold text-[#233C42]">
+                    {s.title}
                   </div>
-
-                  {/* Title */}
-                  <h3
-                    className={`
-                      text-sm font-semibold text-center mb-2 transition-colors duration-300 leading-tight
-                      ${activeStep === step.id ? 'text-[#1B1C1E]' : 'text-[#1B1C1E] group-hover:text-[#E40DA8]'}
-                    `}
-                  >
-                    {step.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-xs text-[#6A6B72] text-center leading-relaxed">
-                    {step.description}
+                  <p className="mt-1 text-sm text-[#233C42]/70">
+                    {s.subtitle}
                   </p>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile/Tablet: Vertical Stepper */}
-        <div className="lg:hidden">
-          <div className="relative">
-            {/* Vertical Line */}
-            <div className="absolute left-[44px] top-0 bottom-0 w-[1px] bg-[#E5E5E8]">
-              <div
-                className="w-full bg-gradient-to-b from-[#E40DA8]/50 to-[#7424B3]/50 transition-all duration-1000 ease-out"
-                style={{
-                  height: hasAnimated ? '100%' : '0%',
-                  opacity: hasAnimated ? 0.5 : 0
-                }}
-              />
-            </div>
-
-            {/* Steps */}
-            <div className="space-y-6">
-              {steps.map((step, index) => (
-                <div
-                  key={step.id}
-                  className="relative flex items-start gap-6"
-                  style={{
-                    opacity: hasAnimated ? 1 : 0,
-                    transform: hasAnimated ? 'translateY(0)' : 'translateY(20px)',
-                    transition: `all 0.5s ease-out ${index * 0.1}s`,
-                  }}
-                >
-                  {/* Icon Circle */}
-                  <div className="flex-shrink-0 w-[88px] h-[88px] rounded-full border border-[#E5E5E8] bg-white flex items-center justify-center">
-                    <div className="text-[#B8BAC0]">{step.icon}</div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1 pt-6">
-                    <div className="text-xs font-semibold text-[#6A6B72] mb-2">
-                      Step {step.id}
-                    </div>
-                    <h3 className="text-base font-semibold text-[#1B1C1E] mb-2 leading-tight">
-                      {step.title}
-                    </h3>
-                    <p className="text-sm text-[#6A6B72] leading-relaxed">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* CTA Section */}
-        <div className="mt-16 text-center">
-          <button
-            onClick={scrollToForm}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-gradient-to-r from-pink-500 to-purple-600 text-white text-base font-medium hover:opacity-90 transition-all duration-300"
-          >
-            ✨ Start the magic →
-          </button>
-          <div className="mt-4">
-            <a
-              href="#form-section"
-              className="text-sm text-[#6A6B72] hover:text-[#E40DA8] transition-colors duration-300"
-            >
-              See example personas
-            </a>
-          </div>
-        </div>
+              </li>
+            );
+          })}
+        </ol>
       </div>
     </section>
   );

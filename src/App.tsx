@@ -2,15 +2,9 @@ import React, { useState } from 'react';
 import { ChevronDown, Play, ArrowRight, Menu, X, Zap, TrendingUp, Brain } from 'lucide-react';
 import HowItWorks from './components/HowItWorks';
 import LogoMarquee from './components/LogoMarquee';
+import SignupForm from './components/SignupForm';
 
 function App() {
-  const [formData, setFormData] = useState({
-    email: '',
-    brandName: '',
-    domain: '',
-    preferences: ''
-  });
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const scrollToForm = () => {
@@ -22,29 +16,7 @@ function App() {
 
   const handleHeroSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const formElement = e.target as HTMLFormElement;
-    const formData = new FormData(formElement);
-    const domain = formData.get('domain') as string;
-    
-    // Update the main form data with the domain
-    setFormData(prev => ({ ...prev, domain }));
-    
-    // Scroll to the main form
     scrollToForm();
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission here
-    alert('Thank you! We\'ll set up your account and get back to you soon.');
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
   };
 
   return (
@@ -167,91 +139,7 @@ function App() {
       </div>
 
       {/* Lead Form Section */}
-      <section id="form-section" className="py-20 px-6">
-        <div className="max-w-lg mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Request Your Free AI-Sourced Creator Matches
-            </h2>
-            <p className="text-xl text-gray-600">
-              Sign up and receive personalized creator suggestions tailored to your brand - no credit card required.
-            </p>
-          </div>
-
-          <form onSubmit={handleSubmit} className="bg-white rounded-xl shadow-lg shadow-gray-100 p-10">
-            <div className="space-y-6">
-              <div>
-                <label htmlFor="domain" className="block text-sm font-medium text-gray-700 mb-2">
-                  Domain/Website *
-                </label>
-                <input
-                  type="text"
-                  id="domain"
-                  name="domain"
-                  required
-                  value={formData.domain}
-                  onChange={handleInputChange}
-                  className="rounded-lg border border-gray-200 px-4 py-3 w-full text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-2 focus:ring-purple-100 transition-all duration-300 outline-none"
-                  placeholder="yourwebsite.com"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Business Email *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="rounded-lg border border-gray-200 px-4 py-3 w-full text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-2 focus:ring-purple-100 transition-all duration-300 outline-none"
-                  placeholder="your.email@company.com"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="brandName" className="block text-sm font-medium text-gray-700 mb-2">
-                  Brand Name
-                </label>
-                <input
-                  type="text"
-                  id="brandName"
-                  name="brandName"
-                  value={formData.brandName}
-                  onChange={handleInputChange}
-                  className="rounded-lg border border-gray-200 px-4 py-3 w-full text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-2 focus:ring-purple-100 transition-all duration-300 outline-none"
-                  placeholder="Your Brand Name"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="preferences" className="block text-sm font-medium text-gray-700 mb-2">
-                  Creator Preferences (Optional)
-                </label>
-                <textarea
-                  id="preferences"
-                  name="preferences"
-                  rows={3}
-                  value={formData.preferences}
-                  onChange={handleInputChange}
-                  className="rounded-lg border border-gray-200 px-4 py-3 w-full text-gray-900 placeholder-gray-400 focus:border-purple-500 focus:ring-2 focus:ring-purple-100 transition-all duration-300 outline-none resize-none"
-                  placeholder="Tell us about your ideal creator (e.g., niche, audience size, style...)"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-4 px-8 rounded-md text-lg font-semibold hover:from-pink-600 hover:to-purple-700 hover:shadow-md transition-all duration-300"
-              >
-                ✨ Start the magic – Get Started →
-              </button>
-            </div>
-          </form>
-        </div>
-      </section>
+      <SignupForm />
 
       {/* Video Section */}
       <section className="py-20 px-6">
@@ -310,9 +198,9 @@ function App() {
 
             <div className="py-8 md:py-0 md:px-8 lg:px-12 text-center md:text-left">
               <Brain className="w-6 h-6 text-[#5B5C63] opacity-70 mb-4 mx-auto md:mx-0" />
-              <h3 className="text-xl md:text-2xl font-semibold text-[#1B1C1E] mb-3">Self-Learning Recommendations</h3>
+              <h3 className="text-xl md:text-2xl font-semibold text-[#1B1C1E] mb-3">AI-Powered Creator Insights</h3>
               <p className="text-[#4A4C57] leading-relaxed">
-                Your personas get smarter with every campaign. AI automatically adapts to performance data and market shifts without manual updates.
+                Get instant insights into why specific creators match your brand - including audience fit, content style, and engagement potential. No spreadsheets. Just clear, actionable data.
               </p>
             </div>
           </div>
