@@ -3,7 +3,6 @@ import { ChevronDown, Play, ArrowRight, Menu, X, Zap, TrendingUp, Brain } from '
 import HowItWorks from './components/HowItWorks';
 import LogoMarquee from './components/LogoMarquee';
 import LeadForm from './components/LeadForm';
-import BenefitsSection from './components/BenefitsSection';
 import { scrollToLeadForm } from './utils/scrollTo';
 
 function App() {
@@ -137,14 +136,8 @@ function App() {
         <HowItWorks />
       </div>
 
-      {/* Logo Marquee */}
-      <LogoMarquee />
-
       {/* Lead Form */}
       <LeadForm />
-
-      {/* Benefits Section */}
-      <BenefitsSection />
 
       {/* Automation Benefits Section */}
       <section className="py-16 md:py-24 px-6 bg-[#FAFAFB] relative" style={{ boxShadow: 'inset 0 1px 0 rgba(0,0,0,0.03)' }}>
@@ -187,6 +180,9 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* Logo Marquee */}
+      <LogoMarquee />
 
       {/* Trust/Stats Section */}
       <section aria-label="Trusted by customers" className="py-10 px-6 bg-white">
