@@ -39,7 +39,7 @@ export default function LogoMarquee() {
   return (
     <section
       aria-label="Brands using Creator Personas"
-      className="relative py-10 bg-white overflow-hidden"
+      className="relative py-10 md:py-12 pb-14 md:pb-20 bg-white overflow-hidden"
     >
       <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10" />
       <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10" />

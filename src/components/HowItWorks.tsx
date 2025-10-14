@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Tag,
   Search,
@@ -8,111 +8,140 @@ import {
 } from "lucide-react";
 
 type Step = {
+  label: string;
   title: string;
-  subtitle: string;
-  icon: React.ReactNode;
+  desc: string;
+  icon: React.ElementType;
+  active?: boolean;
 };
 
 const steps: Step[] = [
   {
+    icon: Tag,
+    label: "STEP 1",
     title: "Enter Your Brand",
-    subtitle:
-      "Tell us about your brand or website. We analyze tone, audience, and positioning.",
-    icon: <Tag strokeWidth={1.5} />,
+    desc: "Tell us about your brand or website. We analyze tone, audience & positioning.",
   },
   {
+    icon: Search,
+    label: "STEP 2",
     title: "Brand Profile Detection",
-    subtitle:
-      "AI builds your brand persona automatically based on how you communicate.",
-    icon: <Search strokeWidth={1.5} />,
+    desc: "AI builds your brand persona automatically based on how you communicate.",
+    active: true,
   },
   {
+    icon: BarChart3,
+    label: "STEP 3",
     title: "Market & Creator Analysis",
-    subtitle:
-      "We scan competitors and collaborations to map relevant creator niches.",
-    icon: <BarChart3 strokeWidth={1.5} />,
+    desc: "We scan competitors & collaborations to map relevant creator niches.",
   },
   {
+    icon: Users,
+    label: "STEP 4",
     title: "Creator Matches",
-    subtitle:
-      "Instantly see your top matching creators that fit your style and community.",
-    icon: <Users strokeWidth={1.5} />,
+    desc: "Instantly see your top matching creators that fit your style & community.",
   },
   {
+    icon: UserCircle,
+    label: "STEP 5",
     title: "Refine & Compare",
-    subtitle:
-      "Adjust the persona, compare creators side-by-side, and save for campaigns.",
-    icon: <UserCircle strokeWidth={1.5} />,
+    desc: "Adjust the persona, compare creators side-by-side, save for campaigns.",
   },
 ];
 
 export default function HowItWorks() {
-  const [active, setActive] = useState(1);
-
   return (
-    <section className="relative max-w-6xl mx-auto px-6 md:px-8 py-14 md:py-18">
-      <header className="text-center mb-8 md:mb-10">
-        <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-[#233C42]">
-          How Creator Personas Works - From Brand Insight to Perfect Creator Match
-        </h2>
-        <p className="mt-3 text-[#233C42]/70 max-w-3xl mx-auto">
-          Our AI builds your creator persona and instantly connects you with the
-          best-matching creators for your brand.
-        </p>
-      </header>
+    <section className="relative max-w-6xl mx-auto px-6 md:px-8 -mt-4">
+      <div className="bg-white stepper-elevated">
+        <header className="text-center pt-10 pb-8 px-6">
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-[#233C42]">
+            How Creator Personas Works - From Brand Insight to Perfect Creator Match
+          </h2>
+          <p className="mt-3 text-[#233C42]/70 max-w-3xl mx-auto">
+            Our AI builds your creator persona and instantly connects you with the
+            best-matching creators for your brand.
+          </p>
+        </header>
 
-      <div className="relative mt-8 md:mt-10">
-        <div className="absolute left-0 right-0 top-8 md:top-10 h-px bg-[#E7E8EC]" />
+        <div className="relative px-6 pb-6">
+          <div className="absolute left-6 right-6 top-10 h-[2px] bg-[#E9EAEA]">
+            <div
+              className="h-full bg-gradient-to-r from-[#E40DA8] to-[#7424B3] rounded-full animate-line"
+              style={{ width: "46%" }}
+            />
+          </div>
 
-        <ol className="relative grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-10">
-          {steps.map((s, i) => {
-            const isActive = i === active;
-            return (
-              <li key={i} className="relative">
-                <button
-                  onClick={() => setActive(i)}
-                  aria-label={`Go to step ${i + 1}`}
-                  className={[
-                    "group relative z-10 mx-auto flex h-16 w-16 items-center justify-center rounded-full border transition-all",
-                    "bg-white shadow-sm ring-1 ring-black/5",
-                    "hover:scale-[1.05] ease-out",
-                    isActive
-                      ? "border-transparent"
-                      : "border-[#E7E8EC] hover:border-[#DADBE0]",
-                  ].join(" ")}
-                  style={
-                    isActive
-                      ? {
-                          background:
-                            "linear-gradient(135deg,#E40DA8 0%,#7424B3 100%)",
-                          color: "white",
+          <div className="relative grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-10">
+            {steps.map((s, i) => {
+              const Icon = s.icon;
+              const isActive = !!s.active;
+
+              return (
+                <div key={i} className="flex flex-col items-center text-center">
+                  <div
+                    tabIndex={0}
+                    aria-label={`${s.label}: ${s.title}`}
+                    className={[
+                      "relative z-10 h-20 w-20 rounded-full flex items-center justify-center",
+                      "bg-white shadow-[0_1px_2px_rgba(0,0,0,0.04)] ring-1 ring-black/5",
+                      "transition-transform duration-200 ease-out",
+                      "hover:scale-[1.03] focus:scale-[1.03] focus-visible:outline-none cursor-default",
+                      isActive ? "ring-0" : "",
+                    ].join(" ")}
+                    style={
+                      isActive
+                        ? {
+                            boxShadow:
+                              "0 1px 2px rgba(0,0,0,.04), inset 0 0 0 2px rgba(228,13,168,.15)",
+                          }
+                        : undefined
+                    }
+                  >
+                    <div
+                      className={[
+                        "grid place-items-center h-12 w-12 rounded-full",
+                        isActive
+                          ? "bg-gradient-to-br from-[#E40DA8] to-[#7424B3] text-white"
+                          : "bg-white",
+                      ].join(" ")}
+                    >
+                      <Icon
+                        strokeWidth={1.5}
+                        className={
+                          isActive
+                            ? "text-white"
+                            : "text-[#C8C9CF] group-hover:text-[#9ea2a8]"
                         }
-                      : { color: "#C8C9CF", background: "white" }
-                  }
-                >
-                  <span className={isActive ? "text-white" : "text-[#C8C9CF]"}>
-                    {s.icon}
-                  </span>
-                  {isActive && (
-                    <span className="absolute inset-0 rounded-full ring-4 ring-[#E40DA8]/15" />
-                  )}
-                </button>
+                      />
+                    </div>
 
-                <div className="mt-4 text-center max-w-[16rem] mx-auto">
-                  <div className="text-xs uppercase tracking-wide text-[#233C42]/50">
-                    Step {i + 1}
+                    {isActive && (
+                      <span
+                        className="pointer-events-none absolute inset-0 rounded-full ring-2 ring-transparent"
+                        style={{
+                          boxShadow:
+                            "0 0 0 6px rgba(228,13,168,.08), 0 0 0 12px rgba(116,36,179,.05)",
+                        }}
+                      />
+                    )}
                   </div>
-                  <div className="mt-1 font-semibold text-[#233C42]">
+
+                  <div className="mt-4 text-[11px] tracking-wide uppercase text-[#233C42]/50">
+                    {s.label}
+                  </div>
+                  <div className="mt-1 text-[17px] font-semibold text-[#233C42]">
                     {s.title}
                   </div>
-                  <p className="mt-1 text-sm text-[#233C42]/70">
-                    {s.subtitle}
+                  <p className="mt-2 text-sm leading-relaxed text-[#233C42]/70">
+                    {s.desc}
                   </p>
                 </div>
-              </li>
-            );
-          })}
-        </ol>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="h-0.5 mx-6 mb-6 rounded rail-animated" />
       </div>
     </section>
   );

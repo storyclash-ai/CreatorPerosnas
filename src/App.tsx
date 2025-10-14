@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { ChevronDown, Play, ArrowRight, Menu, X, Zap, TrendingUp, Brain } from 'lucide-react';
 import HowItWorks from './components/HowItWorks';
 import LogoMarquee from './components/LogoMarquee';
-import SignupForm from './components/SignupForm';
+import JourneyExplainer from './components/JourneyExplainer';
+import LeadForm from './components/LeadForm';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -138,28 +139,12 @@ function App() {
         <HowItWorks />
       </div>
 
-      {/* Lead Form Section */}
-      <SignupForm />
+      {/* Lead Form */}
+      <LeadForm />
 
-      {/* Video Section */}
+      {/* Journey Explainer Section */}
       <section className="py-20 px-6">
-        <div className="max-w-[880px] mx-auto">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-2">Watch Creator Personas in Action</h3>
-            <p className="text-gray-600">See how AI finds the perfect creators for your brand</p>
-          </div>
-          <div className="aspect-video rounded-xl overflow-hidden bg-gray-100 shadow-sm ring-1 ring-black/5">
-            <iframe
-              src="https://www.youtube.com/embed/iin3uhVIexo"
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-              className="w-full h-full"
-            ></iframe>
-          </div>
-        </div>
+        <JourneyExplainer />
       </section>
 
       {/* Logo Marquee */}
@@ -181,7 +166,7 @@ function App() {
           {/* Feature Columns */}
           <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200">
             <div className="py-8 md:py-0 md:px-8 lg:px-12 text-center md:text-left">
-              <Zap className="w-6 h-6 text-[#5B5C63] opacity-70 mb-4 mx-auto md:mx-0" />
+              <Zap className="w-6 h-6 icon-muted-violet mb-4 mx-auto md:mx-0" aria-hidden="true" />
               <h3 className="text-xl md:text-2xl font-semibold text-[#1B1C1E] mb-3">100x Faster Searches</h3>
               <p className="text-[#4A4C57] leading-relaxed">
                 Use rich persona profiles to automate discovery. Surface ideal creators in seconds instead of spending hours on manual research.
@@ -189,7 +174,7 @@ function App() {
             </div>
 
             <div className="py-8 md:py-0 md:px-8 lg:px-12 text-center md:text-left">
-              <TrendingUp className="w-6 h-6 text-[#5B5C63] opacity-70 mb-4 mx-auto md:mx-0" />
+              <TrendingUp className="w-6 h-6 icon-muted-violet mb-4 mx-auto md:mx-0" aria-hidden="true" />
               <h3 className="text-xl md:text-2xl font-semibold text-[#1B1C1E] mb-3">20% More Revenue Per Creator</h3>
               <p className="text-[#4A4C57] leading-relaxed">
                 Our algorithm identifies high-performing creators based on what actually drives results in your industry. Customers see 20% more revenue per collaboration.
@@ -197,7 +182,7 @@ function App() {
             </div>
 
             <div className="py-8 md:py-0 md:px-8 lg:px-12 text-center md:text-left">
-              <Brain className="w-6 h-6 text-[#5B5C63] opacity-70 mb-4 mx-auto md:mx-0" />
+              <Brain className="w-6 h-6 icon-muted-violet mb-4 mx-auto md:mx-0" aria-hidden="true" />
               <h3 className="text-xl md:text-2xl font-semibold text-[#1B1C1E] mb-3">AI-Powered Creator Insights</h3>
               <p className="text-[#4A4C57] leading-relaxed">
                 Get instant insights into why specific creators match your brand - including audience fit, content style, and engagement potential. No spreadsheets. Just clear, actionable data.
