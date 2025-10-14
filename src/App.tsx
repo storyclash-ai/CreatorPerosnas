@@ -2,22 +2,16 @@ import React, { useState } from 'react';
 import { ChevronDown, Play, ArrowRight, Menu, X, Zap, TrendingUp, Brain } from 'lucide-react';
 import HowItWorks from './components/HowItWorks';
 import LogoMarquee from './components/LogoMarquee';
-import JourneyExplainer from './components/JourneyExplainer';
 import LeadForm from './components/LeadForm';
+import BenefitsSection from './components/BenefitsSection';
+import { scrollToLeadForm } from './utils/scrollTo';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const scrollToForm = () => {
-    const formElement = document.getElementById('form-section');
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const handleHeroSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    scrollToForm();
+    scrollToLeadForm(96);
   };
 
   return (
@@ -44,7 +38,10 @@ function App() {
             {/* Desktop CTA */}
             <div className="hidden md:block">
               <button
-                onClick={scrollToForm}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToLeadForm(96);
+                }}
                 className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-2.5 rounded-md text-sm font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300"
               >
                 ✨ Start the magic →
@@ -65,8 +62,9 @@ function App() {
             <div className="md:hidden mt-4 pt-4 border-t border-gray-100">
               <div className="flex flex-col space-y-4">
                 <button
-                  onClick={() => {
-                    scrollToForm();
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToLeadForm(96);
                     setIsMobileMenuOpen(false);
                   }}
                   className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-2.5 rounded-md text-sm font-semibold text-center"
@@ -139,16 +137,14 @@ function App() {
         <HowItWorks />
       </div>
 
+      {/* Logo Marquee */}
+      <LogoMarquee />
+
       {/* Lead Form */}
       <LeadForm />
 
-      {/* Journey Explainer Section */}
-      <section className="py-20 px-6">
-        <JourneyExplainer />
-      </section>
-
-      {/* Logo Marquee */}
-      <LogoMarquee />
+      {/* Benefits Section */}
+      <BenefitsSection />
 
       {/* Automation Benefits Section */}
       <section className="py-16 md:py-24 px-6 bg-[#FAFAFB] relative" style={{ boxShadow: 'inset 0 1px 0 rgba(0,0,0,0.03)' }}>

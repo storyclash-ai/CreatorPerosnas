@@ -51,7 +51,10 @@ export default function LeadForm({
   }, [ready, portalId, formId, region]);
 
   return (
-    <section className="relative isolate py-16 md:py-20 bg-gradient-to-b from-[#FAFAFB] to-white">
+    <section
+      id="lead-form"
+      className="relative isolate py-16 md:py-20 bg-gradient-to-b from-[#FAFAFB] to-white scroll-mt-24"
+    >
       <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/60 to-transparent" />
       <div className="max-w-3xl mx-auto px-6">
         <div className="bg-white/90 backdrop-blur rounded-3xl shadow-xl ring-1 ring-black/5 p-8 md:p-10">
