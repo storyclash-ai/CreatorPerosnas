@@ -136,9 +136,6 @@ function App() {
         <HowItWorks />
       </div>
 
-      {/* Lead Form */}
-      <LeadForm />
-
       {/* Automation Benefits Section */}
       <section className="py-16 md:py-24 px-6 bg-[#FAFAFB] relative" style={{ boxShadow: 'inset 0 1px 0 rgba(0,0,0,0.03)' }}>
         <div className="max-w-6xl mx-auto">
@@ -184,44 +181,34 @@ function App() {
       {/* Logo Marquee */}
       <LogoMarquee />
 
-      {/* Trust/Stats Section */}
-      <section aria-label="Trusted by customers" className="py-10 px-6 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x lg:divide-x divide-gray-200">
-            <div role="group" aria-label="stat" className="py-4 md:py-0 text-center">
-              <div className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-                400+
-              </div>
-              <div className="text-sm text-gray-500 mt-1 leading-tight">
-                Brands Using Our AI
-              </div>
-            </div>
-            <div role="group" aria-label="stat" className="py-4 md:py-0 text-center md:px-6 lg:px-8">
-              <div className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-                5M+
-              </div>
-              <div className="text-sm text-gray-500 mt-1 leading-tight">
-                Creator Profiles Analyzed
-              </div>
-            </div>
-            <div role="group" aria-label="stat" className="py-4 md:py-0 text-center md:px-6 lg:px-8">
-              <div className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-                300+
-              </div>
-              <div className="text-sm text-gray-500 mt-1 leading-tight">
-                Five-Star Reviews
-              </div>
-            </div>
-            <div role="group" aria-label="stat" className="py-4 md:py-0 text-center">
-              <div className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
-                87%
-              </div>
-              <div className="text-sm text-gray-500 mt-1 leading-tight">
-                Campaign Success Rate
-              </div>
-            </div>
-          </div>
+      {/* Lead Form */}
+      <section className="py-20 bg-white">
+        <div className="max-w-3xl mx-auto px-6">
+          <p className="text-center text-sm text-gray-500 mb-8">
+            Join leading brands discovering creators with Storyclash AI
+          </p>
+          <LeadForm />
         </div>
+      </section>
+
+      {/* Trusted Brands Section */}
+      <section aria-label="Trust teaser" className="relative mt-20 md:mt-24">
+        {/* Soft divider / skyline */}
+        <div className="h-8 bg-gradient-to-b from-transparent to-[#FAFAFB]" />
+
+        {/* Card */}
+        <div className="mx-auto max-w-4xl rounded-2xl bg-white ring-1 ring-gray-100 shadow-sm px-6 py-10 md:px-10 md:py-12 text-center">
+          <h2 className="text-[22px] md:text-[28px] leading-tight font-semibold text-[#233C42]">
+            Trusted by 500+ Leading Brands Worldwide
+          </h2>
+          <p className="mt-3 md:mt-4 text-gray-600 text-base md:text-lg">
+            Storyclash AI powers creator discovery and analytics for global brands -
+            helping teams make smarter influencer decisions in seconds.
+          </p>
+        </div>
+
+        {/* Subtle base gradient to blend into footer */}
+        <div className="h-12 md:h-16 bg-gradient-to-b from-[#FAFAFB] to-white" />
       </section>
 
       {/* Footer */}
