@@ -7,28 +7,9 @@ import { scrollToLeadForm } from './utils/scrollTo';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [heroInput, setHeroInput] = useState('');
 
   const handleHeroSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    const input = formData.get('domain') as string;
-    setHeroInput(input);
-
-    // Prüfe ob es eine Email oder eine Domain/URL ist
-    const isEmail = input.includes('@');
-
-    // Setze URL Parameter für HubSpot Vorausfüllung
-    const url = new URL(window.location.href);
-    if (isEmail) {
-      url.searchParams.set('email', input);
-      url.searchParams.delete('website');
-    } else {
-      url.searchParams.set('website', input);
-      url.searchParams.delete('email');
-    }
-    window.history.pushState({}, '', url);
-
     scrollToLeadForm(96);
   };
 
@@ -206,7 +187,7 @@ function App() {
           <p className="text-center text-sm text-gray-500 mb-8">
             Join leading brands discovering creators with Storyclash AI
           </p>
-          <LeadForm prefillValue={heroInput} />
+          <LeadForm />
         </div>
       </section>
 
