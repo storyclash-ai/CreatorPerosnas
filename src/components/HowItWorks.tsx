@@ -44,8 +44,8 @@ const steps: Step[] = [
   {
     icon: UserCircle,
     label: "STEP 5",
-    title: "Get 10 Brand-Fit Creator Matches",
-    desc: "Receive a ready-to-use list of 10 creators tailored to your brand – instantly, no manual research needed.",
+    title: "Get Brand-Fit Creator Matches",
+    desc: "Receive a ready-to-use list of creators tailored to your brand - instantly, no manual research needed.",
   },
 ];
 
