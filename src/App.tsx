@@ -7,9 +7,28 @@ import { scrollToLeadForm } from './utils/scrollTo';
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [heroInput, setHeroInput] = useState('');
 
   const handleHeroSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const input = formData.get('domain') as string;
+    setHeroInput(input);
+
+    // Prüfe ob es eine Email oder eine Domain/URL ist
+    const isEmail = input.includes('@');
+
+    // Setze URL Parameter für HubSpot Vorausfüllung
+    const url = new URL(window.location.href);
+    if (isEmail) {
+      url.searchParams.set('email', input);
+      url.searchParams.delete('website');
+    } else {
+      url.searchParams.set('website', input);
+      url.searchParams.delete('email');
+    }
+    window.history.pushState({}, '', url);
+
     scrollToLeadForm(96);
   };
 
@@ -97,12 +116,12 @@ function App() {
           
           {/* Headline */}
           <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight tracking-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#E40DA8] to-[#7424B3]">Creator</span> Personas - Find Your <br />Perfect Creator <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#E40DA8] to-[#7424B3]">Match</span> in Seconds, <br />Not Weeks
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#E40DA8] to-[#7424B3]">Creator</span> Discovery<br />That <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#E40DA8] to-[#7424B3]">Knows</span> Your Brand <br />Better Than You Do
           </h1>
           
           {/* Subline */}
           <p className="mt-6 text-lg text-gray-500 max-w-[760px] mx-auto leading-relaxed">
-            From brand to creators in seconds - our AI researches your brand, competitors, and market to build a creator persona and match you with the perfect influencers.
+            Our AI decodes your products, competitive landscape, and marketing footprint to extract your brand DNA. Then builds creator personas so accurate, the recommendations feel like mind-reading.
           </p>
           
           {/* Input and Button Form */}
@@ -187,7 +206,7 @@ function App() {
           <p className="text-center text-sm text-gray-500 mb-8">
             Join leading brands discovering creators with Storyclash AI
           </p>
-          <LeadForm />
+          <LeadForm prefillValue={heroInput} />
         </div>
       </section>
 
