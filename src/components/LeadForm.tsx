@@ -137,7 +137,7 @@ export default function LeadForm({
         <div id="lead-form-mount" ref={containerRef} />
 
         <p className="mt-4 text-center text-sm text-[#233C42]/50">
-          🔒 Your data is safe. We'll only use it to set up your trial.
+          🔒 Your data is safe. We'll only use it to set up your creator matches.
         </p>
       </div>
     </div>

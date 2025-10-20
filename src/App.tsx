@@ -62,7 +62,7 @@ function App() {
                 }}
                 className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-2.5 rounded-md text-sm font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300"
               >
-                ✨ Start the magic →
+                ✨ Send me creator matches →
               </button>
             </div>
 
@@ -87,7 +87,7 @@ function App() {
                   }}
                   className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-2.5 rounded-md text-sm font-semibold text-center"
                 >
-                  ✨ Start the magic →
+                  ✨ Send me creator matches →
                 </button>
               </div>
             </div>
@@ -121,7 +121,7 @@ function App() {
           
           {/* Subline */}
           <p className="mt-6 text-lg text-gray-500 max-w-[760px] mx-auto leading-relaxed">
-            Our AI decodes your products, competitive landscape, and marketing footprint to extract your brand DNA. Then builds creator personas so accurate, the recommendations feel like mind-reading.
+            Our AI decodes your products, competitive landscape, and marketing footprint to extract your brand DNA. Then builds creator personas so accurate, the recommendations feel like mind-reading. <b>Try it out yourself and get creator matches into your inbox.</b>
           </p>
           
           {/* Input and Button Form */}
@@ -139,13 +139,13 @@ function App() {
               type="submit"
               className="mt-3 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-gradient-to-r from-pink-500 to-purple-600 text-white text-base font-medium hover:opacity-90 transition-all duration-300"
             >
-              ✨ Start the magic →
+              ✨ Send me creator matches →
             </button>
           </form>
           
           {/* Helper text */}
           <p className="mt-3 text-xs text-gray-400">
-            Free trial • No credit card
+            
           </p>
         </div>
       </section>
