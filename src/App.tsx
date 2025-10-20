@@ -121,7 +121,7 @@ function App() {
           
           {/* Subline */}
           <p className="mt-6 text-lg text-gray-500 max-w-[760px] mx-auto leading-relaxed">
-            Our AI decodes your products, competitive landscape, and marketing footprint to extract your brand DNA. Then builds creator personas so accurate, the recommendations feel like mind-reading. <b>Try it out yourself and get creator matches into your inbox.</b>
+            Our AI decodes your products, competitive landscape, and marketing footprint to extract your brand DNA. Then builds creator personas so accurate, the recommendations feel like mind-reading. Try it out yourself and get creator matches into your inbox.
           </p>
           
           {/* Input and Button Form */}
