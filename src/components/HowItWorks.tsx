@@ -19,33 +19,33 @@ const steps: Step[] = [
   {
     icon: Tag,
     label: "STEP 1",
-    title: "Enter Your Brand",
-    desc: "Tell us about your brand or website. We analyze your tone, audience, and positioning.",
+    title: "Brand Profile Detection",
+    desc: "With just your brand website, we analyze your products, values, and target audience to build your foundation.",
   },
   {
     icon: Search,
     label: "STEP 2",
-    title: "Brand Profile Detection",
-    desc: "Our AI builds your brand profile automatically based on how you communicate and perform online.",
+    title: "Marketing Footprint Analysis",
+    desc: "Our AI enhances your profile based on your historical social media and influencer marketing activities.",
     active: true,
   },
   {
     icon: BarChart3,
     label: "STEP 3",
     title: "Market & Competitor Analysis",
-    desc: "We analyze markets, campaigns, and competitors to identify your ideal creator segment.",
+    desc: "We analyze markets, campaigns, and competitors to identify your ideal creator strategy and segments.",
   },
   {
     icon: Users,
     label: "STEP 4",
     title: "Creator Matches",
-    desc: "Instantly see creators that perfectly match your brand's style, audience, and values.",
+    desc: "With rich data insights, our recommendation engine surfaces creators that perfectly match your brand's style, audience, and goals.",
   },
   {
     icon: UserCircle,
     label: "STEP 5",
     title: "Get Brand-Fit Creator Matches",
-    desc: "Receive a ready-to-use list of creators tailored to your brand - instantly, no manual research needed.",
+    desc: "Receive a ready-to-use list of creators tailored to your brand, without filters, settings, or manual research.",
   },
 ];
 
@@ -55,20 +55,24 @@ export default function HowItWorks() {
       <div className="bg-white stepper-elevated">
         <header className="text-center pt-10 pb-8 px-6">
           <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-[#233C42]">
-            How Creator Personas Works - From Brand Insight to Perfect Creator Match
+            How Creator Personas Work - From Brand Insight to Perfect Creator Match
           </h2>
           <p className="mt-3 text-[#233C42]/70 max-w-3xl mx-auto">
-            Our AI builds your creator persona and instantly connects you with the
+            Our AI builds your creator persona and connects you with the
             best-matching creators for your brand.
           </p>
         </header>
 
         <div className="relative px-6 pb-6">
-          <div className="absolute left-6 right-6 top-10 h-[2px] bg-[#E9EAEA]">
-            <div
-              className="h-full bg-gradient-to-r from-[#E40DA8] to-[#7424B3] rounded-full animate-line"
-              style={{ width: "46%" }}
-            />
+          {/* Mehrfarbige Timeline mit Markern */}
+          <div className="absolute left-6 right-6 top-10">
+            <div className="relative">
+              <div className="h-1 w-full rounded-full bg-gradient-to-r from-amber-400 via-cyan-500 via-purple-600 to-pink-500" />
+              {/* Dezente Marker bei 25/50/75 % */}
+              <span className="absolute left-1/4 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-white/90 ring-1 ring-black/5" />
+              <span className="absolute left-1/2 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-white/90 ring-1 ring-black/5" />
+              <span className="absolute left-3/4 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-white/90 ring-1 ring-black/5" />
+            </div>
           </div>
 
           <div className="relative grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-10">
@@ -83,47 +87,15 @@ export default function HowItWorks() {
                     aria-label={`${s.label}: ${s.title}`}
                     className={[
                       "relative z-10 h-20 w-20 rounded-full flex items-center justify-center",
-                      "bg-white shadow-[0_1px_2px_rgba(0,0,0,0.04)] ring-1 ring-black/5",
-                      "transition-transform duration-200 ease-out",
+                      "bg-white shadow-sm ring-1 transition-transform duration-200 ease-out",
                       "hover:scale-[1.03] focus:scale-[1.03] focus-visible:outline-none cursor-default",
-                      isActive ? "ring-0" : "",
+                      isActive ? "ring-gray-300" : "ring-gray-200",
                     ].join(" ")}
-                    style={
-                      isActive
-                        ? {
-                            boxShadow:
-                              "0 1px 2px rgba(0,0,0,.04), inset 0 0 0 2px rgba(228,13,168,.15)",
-                          }
-                        : undefined
-                    }
                   >
-                    <div
-                      className={[
-                        "grid place-items-center h-12 w-12 rounded-full",
-                        isActive
-                          ? "bg-gradient-to-br from-[#E40DA8] to-[#7424B3] text-white"
-                          : "bg-white",
-                      ].join(" ")}
-                    >
-                      <Icon
-                        strokeWidth={1.5}
-                        className={
-                          isActive
-                            ? "text-white"
-                            : "text-[#C8C9CF] group-hover:text-[#9ea2a8]"
-                        }
-                      />
-                    </div>
-
-                    {isActive && (
-                      <span
-                        className="pointer-events-none absolute inset-0 rounded-full ring-2 ring-transparent"
-                        style={{
-                          boxShadow:
-                            "0 0 0 6px rgba(228,13,168,.08), 0 0 0 12px rgba(116,36,179,.05)",
-                        }}
-                      />
-                    )}
+                    <Icon
+                      strokeWidth={1.5}
+                      className="h-8 w-8 text-gray-700"
+                    />
                   </div>
 
                   <div className="mt-4 text-[11px] tracking-wide uppercase text-[#233C42]/50">
